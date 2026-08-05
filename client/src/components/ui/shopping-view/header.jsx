@@ -17,7 +17,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "../../ui/dropdown-menu";
-//import { Avatar, AvatarFallback } from "../ui/avatar";
+import { Avatar, AvatarFallback } from "../../ui/avatar";
 import { logoutUser } from "@/store/auth-slice";
 //import UserCartWrapper from "./cart-wrapper";
 import { useEffect, useState } from "react";
@@ -25,6 +25,8 @@ import { useEffect, useState } from "react";
 import { Label } from "../../ui/label";
 
 function HeaderRightContent() {
+  const { user } = useSelector((state) => state.auth);
+
   return (
     <div className="flex lg:items-center lg:flex-row flex-col gap-4">
       <Button variant="outline" size="icon">
@@ -33,7 +35,16 @@ function HeaderRightContent() {
       </Button>
 
       <DropdownMenu>
-        <DropdownMenuTrigger asChild></DropdownMenuTrigger>
+        <DropdownMenuTrigger asChild>
+          <Avatar className="bg-black">
+            <AvatarFallback className="bg-black text-white font-extrabold">
+              {user?.userName[0].toUpperCase()}
+            </AvatarFallback>
+          </Avatar>
+        </DropdownMenuTrigger>
+        <DropdownMenuContent side="right" className="w-56">
+          <DropdownMenuLabel>Logged in as {user?.userName}</DropdownMenuLabel>
+        </DropdownMenuContent>
       </DropdownMenu>
     </div>
   );
@@ -48,7 +59,7 @@ function MenuItems() {
           key={menuItem.id}
           to={menuItem.path}
         >
-          {menuItem.label}  
+          {menuItem.label}
         </Link>
       ))}
     </nav>
