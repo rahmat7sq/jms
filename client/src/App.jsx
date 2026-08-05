@@ -7,6 +7,7 @@ import AdminDashboard from "./pages/admin-view/dashboard";
 import AdminProducts from "./pages/admin-view/products";
 import AdminFeatures from "./pages/admin-view/features";
 import AdminOrders from "./pages/admin-view/orders";
+
 import ShoppingLayout from "./components/ui/shopping-view/layout";
 import NotFound from "./pages/not-found";
 import ShoppingHome from "./pages/shopping-view/home";
@@ -37,9 +38,6 @@ function App() {
 
   return (
     <div className="flex flex-col overflow-hidden bg-white">
-      {/* common components */}
-      <h1>Header component</h1>
-
       <Routes>
         <Route
           path="/auth"
