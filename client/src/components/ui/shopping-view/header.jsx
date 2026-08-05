@@ -48,7 +48,7 @@ function MenuItems() {
           key={menuItem.id}
           to={menuItem.path}
         >
-            
+          {menuItem.label}  
         </Link>
       ))}
     </nav>
