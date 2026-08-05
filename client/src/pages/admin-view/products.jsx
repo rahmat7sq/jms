@@ -129,6 +129,7 @@ function AdminProducts() {
           setCurrentEditedId(null);
           setFormData(initialFormData);
         }}
+        modal={false}
       >
         <SheetContent side="right" className="overflow-auto">
           <SheetHeader>
