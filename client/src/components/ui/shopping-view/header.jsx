@@ -27,6 +27,12 @@ import { Label } from "../../ui/label";
 
 function HeaderRightContent() {
   const { user } = useSelector((state) => state.auth);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  function handleLogout() {
+    dispatch(logoutUser());
+  }
 
   return (
     <div className="flex lg:items-center lg:flex-row flex-col gap-4">
@@ -48,6 +54,16 @@ function HeaderRightContent() {
           <DropdownMenuGroup>
             <DropdownMenuLabel>Logged in as {user?.userName}</DropdownMenuLabel>
           </DropdownMenuGroup>
+          <DropdownMenuSeparator />
+          <DropdownMenuItem onClick={() => navigate("/shop/account")}>
+            <UserCog className="mr-2 h-4 w-4" />
+            Account
+          </DropdownMenuItem>
+          <DropdownMenuSeparator />
+          <DropdownMenuItem onClick={handleLogout}>
+            <LogOut className="mr-2 h-4 w-4" />
+            Logout
+          </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
     </div>
@@ -96,11 +112,10 @@ function ShoppingHeader() {
         <div className="hidden lg:block">
           <MenuItems />
         </div>
-        {isAuthenticated ? (
-          <div>
-            <HeaderRightContent />
-          </div>
-        ) : null}
+
+        <div className="hidden lg:block">
+          <HeaderRightContent />
+        </div>
       </div>
     </header>
   );
