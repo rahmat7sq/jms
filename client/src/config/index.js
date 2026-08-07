@@ -170,7 +170,7 @@ export const filterOptions = {
     { id: "axle", label: "Axle" },
     { id: "hub", label: "Hub" },
     { id: "air-tank", label: "Air Tank" },
-    { id: "balance-rod-set", label: "Naka Jhula Balance Rod Set" },
+    { id: "balance-rod-set", label: "Balance Rod Set" },
     { id: "kamani", label: "Kamani (Leaf Spring)" },
   ],
   brand: [
