@@ -147,20 +147,20 @@ export const shoppingViewHeaderMenuItems = [
 ];
 
 export const categoryOptionsMap = {
-  axle: "Axle",
-  hub: "Hub",
+  "axle": "Axle",
+  "hub": "Hub",
   "air-tank": "Air Tank",
-  "balance-rod-set": "Naka Jhula Balance Rod Set",
-  kamani: "Kamani (Leaf Spring)",
+  "balance-rod-set": "Balance Rod Set",
+  "kamani": "Kamani (Leaf Spring)",
 };
 
 export const brandOptionsMap = {
-  tata: "Tata Motors",
+  "tata": "Tata Motors",
   "ashok-leyland": "Ashok Leyland",
-  mahindra: "Mahindra",
-  eicher: "Eicher",
-  bharatbenz: "BharatBenz",
-  volvo: "Volvo",
+  "mahindra": "Mahindra",
+  "eicher": "Eicher",
+  "bharatbenz": "BharatBenz",
+  "volvo": "Volvo",
   "force-motors": "Force Motors",
   "sml-isuzu": "SML Isuzu",
 };
