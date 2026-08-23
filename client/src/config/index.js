@@ -63,6 +63,7 @@ export const addProductFormElements = [
       { id: "air-tank", label: "Air Tank" },
       { id: "balance-rod-set", label: "Naka Jhula Balance Rod Set" },
       { id: "kamani", label: "Kamani (Leaf Spring)" },
+      {id:"others", label: "Others"},
     ],
   },
   {
@@ -78,6 +79,7 @@ export const addProductFormElements = [
       { id: "volvo", label: "Volvo" },
       { id: "force-motors", label: "Force Motors" },
       { id: "sml-isuzu", label: "SML Isuzu" },
+      {id:"generic", label: "Generic"},
     ],
   },
   {
@@ -135,8 +137,13 @@ export const shoppingViewHeaderMenuItems = [
     path: "/shop/listing",
   },
   {
-    id: "kamani",
-    label: "Kamani",
+    id: "leaf-spring",
+    label: "Leaf Spring",
+    path: "/shop/listing",
+  },
+  {
+    id: "others",
+    label: "Others",
     path: "/shop/listing",
   },
   {
@@ -144,6 +151,7 @@ export const shoppingViewHeaderMenuItems = [
     label: "Search",
     path: "/shop/search",
   },
+  
 ];
 
 export const categoryOptionsMap = {
@@ -152,6 +160,7 @@ export const categoryOptionsMap = {
   "air-tank": "Air Tank",
   "balance-rod-set": "Balance Rod Set",
   "kamani": "Kamani (Leaf Spring)",
+  "others" : "Others",
 };
 
 export const brandOptionsMap = {
@@ -163,6 +172,7 @@ export const brandOptionsMap = {
   "volvo": "Volvo",
   "force-motors": "Force Motors",
   "sml-isuzu": "SML Isuzu",
+  "generic" : "Generic",
 };
 
 export const filterOptions = {
@@ -172,6 +182,7 @@ export const filterOptions = {
     { id: "air-tank", label: "Air Tank" },
     { id: "balance-rod-set", label: "Balance Rod Set" },
     { id: "kamani", label: "Kamani (Leaf Spring)" },
+     { id: "others", label: "Others" },
   ],
   brand: [
     { id: "tata", label: "Tata Motors" },
@@ -182,6 +193,7 @@ export const filterOptions = {
     { id: "volvo", label: "Volvo" },
     { id: "force-motors", label: "Force Motors" },
     { id: "sml-isuzu", label: "SML Isuzu" },
+    { id: "generic", label: "Generic" },
   ],
 };
 
@@ -192,39 +204,39 @@ export const sortOptions = [
   { id: "title-ztoa", label: "Title: Z to A" },
 ];
 
-export const addressFormControls = [
-  {
-    label: "Address",
-    name: "address",
-    componentType: "input",
-    type: "text",
-    placeholder: "Enter your address",
-  },
-  {
-    label: "City",
-    name: "city",
-    componentType: "input",
-    type: "text",
-    placeholder: "Enter your city",
-  },
-  {
-    label: "Pincode",
-    name: "pincode",
-    componentType: "input",
-    type: "text",
-    placeholder: "Enter your pincode",
-  },
-  {
-    label: "Phone",
-    name: "phone",
-    componentType: "input",
-    type: "text",
-    placeholder: "Enter your phone number",
-  },
-  {
-    label: "Notes",
-    name: "notes",
-    componentType: "textarea",
-    placeholder: "Enter any additional notes",
-  },
-];
+// export const addressFormControls = [
+//   {
+//     label: "Address",
+//     name: "address",
+//     componentType: "input",
+//     type: "text",
+//     placeholder: "Enter your address",
+//   },
+//   {
+//     label: "City",
+//     name: "city",
+//     componentType: "input",
+//     type: "text",
+//     placeholder: "Enter your city",
+//   },
+//   {
+//     label: "Pincode",
+//     name: "pincode",
+//     componentType: "input",
+//     type: "text",
+//     placeholder: "Enter your pincode",
+//   },
+//   {
+//     label: "Phone",
+//     name: "phone",
+//     componentType: "input",
+//     type: "text",
+//     placeholder: "Enter your phone number",
+//   },
+//   {
+//     label: "Notes",
+//     name: "notes",
+//     componentType: "textarea",
+//     placeholder: "Enter any additional notes",
+//   },
+// ];

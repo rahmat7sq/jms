@@ -1,11 +1,59 @@
+import { useDispatch, useSelector } from "react-redux";
 import { Button } from "../button";
 import { Dialog, DialogContent } from "../dialog";
 import { Separator } from "../separator";
+import { addToCart, fetchCartItems } from "@/store/shop/cart-slice";
+import { useToast } from "../use-toast";
+import { setProductDetails } from "@/store/shop/products-slice";
 
 function ProductDetailsDialog({ open, setOpen, productDetails }) {
+  const dispatch = useDispatch();
+  const { user } = useSelector((state) => state.auth);
+  const { toast } = useToast();
+
+  function handleAddtoCart(getCurrentProductId, getTotalStock) {
+    console.log(cartItems);
+    let getCartItems = cartItems.items || [];
+
+    if (getCartItems.length) {
+      const indexOfCurrentItem = getCartItems.findIndex(
+        (item) => item.productId === getCurrentProductId,
+      );
+      if (indexOfCurrentItem > -1) {
+        const getQuantity = getCartItems[indexOfCurrentItem].quantity;
+        if (getQuantity + 1 > getTotalStock) {
+          toast({
+            title: `Only ${getQuantity} quantity can be added for this item`,
+            variant: "destructive",
+          });
+
+          return;
+        }
+      }
+    }
+
+    dispatch(
+      addToCart({
+        userId: user?.id,
+        productId: getCurrentProductId,
+        quantity: 1,
+      }),
+    ).then((data) => {
+      if (data?.payload?.success) {
+        dispatch(fetchCartItems(user?.id));
+        toast({
+          title: "Product is added to cart",
+        });
+      }
+    });
+  }
+  function handleDialogClose() {
+    setOpen(false);
+    dispatch(setProductDetails());
+  }
+
   return (
-    //<Dialog open={open} onOpenChange={handleDialogClose}>
-    <Dialog open={open} onOpenChange={setOpen}>
+    <Dialog open={open} onOpenChange={handleDialogClose}>
       <DialogContent className="grid grid-cols-2 gap-8 sm:p-12 max-w-[90vw] sm:max-w-[80vw] lg:max-w-[70vw]">
         <div className="relative overflow-hidden rounded-lg">
           <img
