@@ -128,7 +128,7 @@ function ShoppingHome() {
   return (
     <div className="flex flex-col min-h-screen bg-[#F5F4F0]">
       {/* HERO */}
-      <div className="relative w-full h-[560px] overflow-hidden bg-[#1C2126]">
+      <div className="relative w-full h-560px overflow-hidden bg-[#1C2126]">
         {slides.map((slide, index) => (
           <img
             src={slide}
@@ -169,7 +169,7 @@ function ShoppingHome() {
             Bulk supply of certified truck components for distributors,
             workshops, and fleet operators.
           </p>
-          <div className="flex flex-wrap gap-4">
+          <div className="flex flex-wrap gap-4 mb-4 mt-4">
             <Button
               size="lg"
               className="bg-cyan-400 hover:bg-[#c96208] text-black font-bold"
