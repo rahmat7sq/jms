@@ -10,6 +10,7 @@ function ProductDetailsDialog({ open, setOpen, productDetails }) {
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.auth);
   const { toast } = useToast();
+  const { cartItems } = useSelector((state) => state.shopCart);
 
   function handleAddtoCart(getCurrentProductId, getTotalStock) {
     console.log(cartItems);
@@ -98,7 +99,7 @@ function ProductDetailsDialog({ open, setOpen, productDetails }) {
               <Button
                 className="w-full"
                 onClick={() =>
-                  handleAddToCart(
+                  handleAddtoCart(
                     productDetails?._id,
                     productDetails?.totalStock,
                   )
