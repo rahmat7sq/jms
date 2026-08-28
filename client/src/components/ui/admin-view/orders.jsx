@@ -10,41 +10,38 @@ import {
   TableHeader,
   TableRow,
 } from "../../ui/table";
-import ShoppingOrderDetailsView from "./order-details";
+import AdminOrderDetailsView from "./order-details";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  getAllOrdersByUserId,
-  getOrderDetails,
+  getAllOrdersForAdmin,
+  getOrderDetailsForAdmin,
   resetOrderDetails,
-} from "@/store/shop/order-slice";
+} from "@/store/admin/order-slice";
 import { Badge } from "../../ui/badge";
 
-function ShoppingOrders() {
+function AdminOrdersView() {
   const [openDetailsDialog, setOpenDetailsDialog] = useState(false);
+  const { orderList, orderDetails } = useSelector((state) => state.adminOrder);
   const dispatch = useDispatch();
-  const { user } = useSelector((state) => state.auth);
-  const { orderList, orderDetails } = useSelector((state) => state.shopOrder);
 
   function handleFetchOrderDetails(getId) {
-    dispatch(getOrderDetails(getId));
+    dispatch(getOrderDetailsForAdmin(getId));
   }
 
   useEffect(() => {
-    dispatch(getAllOrdersByUserId(user?.id));
+    dispatch(getAllOrdersForAdmin());
   }, [dispatch]);
+
+  console.log(orderDetails, "orderList");
 
   useEffect(() => {
     if (orderDetails !== null) setOpenDetailsDialog(true);
   }, [orderDetails]);
 
-  console.log(orderDetails, "orderDetails");
-  const wholeState = useSelector((state) => state);
-console.log(wholeState);
-
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Order History</CardTitle>
+        <CardTitle>All Orders</CardTitle>
       </CardHeader>
       <CardContent>
         <Table>
@@ -71,8 +68,8 @@ console.log(wholeState);
                           orderItem?.orderStatus === "confirmed"
                             ? "bg-green-500"
                             : orderItem?.orderStatus === "rejected"
-                            ? "bg-red-600"
-                            : "bg-black"
+                              ? "bg-red-600"
+                              : "bg-black"
                         }`}
                       >
                         {orderItem?.orderStatus}
@@ -94,7 +91,7 @@ console.log(wholeState);
                         >
                           View Details
                         </Button>
-                        <ShoppingOrderDetailsView orderDetails={orderDetails} />
+                        <AdminOrderDetailsView orderDetails={orderDetails} />
                       </Dialog>
                     </TableCell>
                   </TableRow>
@@ -107,4 +104,4 @@ console.log(wholeState);
   );
 }
 
-export default ShoppingOrders;
+export default AdminOrdersView;
