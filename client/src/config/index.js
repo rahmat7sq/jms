@@ -61,8 +61,8 @@ export const addProductFormElements = [
       { id: "axle", label: "Axle" },
       { id: "hub", label: "Hub" },
       { id: "air-tank", label: "Air Tank" },
-      { id: "balance-rod-set", label: "Naka Jhula Balance Rod Set" },
-      { id: "kamani", label: "Kamani (Leaf Spring)" },
+      { id: "balance-rod-set", label: "Balance Rod Set" },
+      { id: "leaf-spring", label: "Leaf Spring" },
       {id:"others", label: "Others"},
     ],
   },
@@ -159,7 +159,7 @@ export const categoryOptionsMap = {
   "hub": "Hub",
   "air-tank": "Air Tank",
   "balance-rod-set": "Balance Rod Set",
-  "kamani": "Kamani (Leaf Spring)",
+  "leaf-spring": "Kamani (Leaf Spring)",
   "others" : "Others",
 };
 
@@ -181,7 +181,7 @@ export const filterOptions = {
     { id: "hub", label: "Hub" },
     { id: "air-tank", label: "Air Tank" },
     { id: "balance-rod-set", label: "Balance Rod Set" },
-    { id: "kamani", label: "Kamani (Leaf Spring)" },
+    { id: "leaf-spring", label: "Kamani (Leaf Spring)" },
      { id: "others", label: "Others" },
   ],
   brand: [

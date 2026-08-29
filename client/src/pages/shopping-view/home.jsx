@@ -30,12 +30,12 @@ import ProductDetailsDialog from "@/components/ui/shopping-view/product-details"
 import { getFeatureImages } from "@/store/common-slice";
 
 const categoriesWithIcon = [
-  { id: "axles", label: "Axles", icon: Cylinder },
-  { id: "leaf-springs", label: "Leaf Springs", icon: Layers },
-  { id: "brake-systems", label: "Brake Systems", icon: Disc3 },
-  { id: "suspension", label: "Suspension Kits", icon: CircleGauge },
-  { id: "chassis", label: "Chassis Parts", icon: Frame },
-  { id: "transmission", label: "Transmission", icon: Cog },
+  { id: "axle", label: "Axles", icon: Cylinder },
+  { id: "leaf-spring", label: "Leaf Springs", icon: Layers },
+  { id: "hub", label: "Hubs", icon: Disc3 },
+  { id: "air-tank", label: "Air Tanks", icon: CircleGauge },
+  { id: "balance-rod-set", label: "Balance Rod Set", icon: Frame },
+  { id: "others", label: "Others", icon: Cog },
 ];
 const slides = [bannerOne, bannerTwo, bannerThree];
 
@@ -296,7 +296,7 @@ function ShoppingHome() {
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
             {productList && productList.length > 0
-              ? productList.map((productItem) => (
+              ? productList.slice(0,FEATURED_LIMIT).map((productItem) => (
                   <ShoppingProductTile
                     key={productItem._id}
                     handleGetProductDetails={handleGetProductDetails}

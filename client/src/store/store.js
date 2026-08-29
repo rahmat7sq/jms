@@ -8,12 +8,14 @@ import shopCartSlice from "./shop/cart-slice";
 import commonFeatureReducer from "./common-slice";
 import shopAddressSlice from "./shop/address-slice";
 import shopOrderSlice from "./shop/order-slice";
+import adminUsersReducer from "./admin/user-slice";
 
 const store = configureStore({
   reducer: {
     auth: authReducer,
     adminProducts: adminProductsSlice,
     adminOrder: adminOrderSlice,
+    adminUsers: adminUsersReducer,
     shopProducts: shopProductsSlice,
     shopCart: shopCartSlice,
     commonFeature: commonFeatureReducer,
