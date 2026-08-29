@@ -1,9 +1,10 @@
-const express = require ('express')
-const mongoose = require ('mongoose')
+require('dotenv').config;
+const express = require ('express');
+const mongoose = require ('mongoose');
 const cookieParser = require ('cookie-parser')
-const cors = require('cors')
-const authRouter = require('./routes/auth/auth-routes')
-const adminProductsRouter = require('./routes/admin/products-routes')
+const cors = require('cors');
+const authRouter = require('./routes/auth/auth-routes');
+const adminProductsRouter = require('./routes/admin/products-routes');
 const adminOrderRouter = require("./routes/admin/order-routes");
 const shopProductsRouter = require("./routes/shop/products-routes");
 const shopCartRouter = require("./routes/shop/cart-routes");
@@ -14,7 +15,7 @@ const adminUsersRouter = require("./routes/admin/user-routes");
 
 
 require('dotenv').config();
-mongoose.connect(process.env.MONGO_URI)
+mongoose.connect(process.env.MONGO_URL)
 .then(()=> console.log("MongoDB connected"))
 .catch((error) => console.log(error));
 
@@ -25,7 +26,7 @@ const PORT = process.env.PORT || 5000;
 
 app.use(
     cors({
-        origin : 'http://localhost:5173',
+        origin : process.env.CLIENT_BASE_URL,
         methods : ['GET', 'POST', 'DELETE', 'PUT'],
         allowedHeaders : [
             "Content-Type",

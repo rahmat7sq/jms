@@ -9,7 +9,7 @@ const initialState = {
 export const getAllUsers = createAsyncThunk(
   "/users/getAllUsers",
   async () => {
-    const result = await axios.get("http://localhost:5000/api/admin/users/get");
+    const result = await axios.get(`${import.meta.env.VITE_API_URL}/api/admin/users/get`);
     return result?.data;
   }
 );
