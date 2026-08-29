@@ -172,7 +172,7 @@ function ShoppingHome() {
           <div className="flex flex-wrap gap-4 mb-4 mt-4">
             <Button
               size="lg"
-              className="bg-cyan-400 hover:bg-[#c96208] text-black font-bold"
+              className="bg-cyan-400 hover:bg-white text-black font-bold"
               onClick={() => navigate("/shop/listing")}
             >
               Browse Catalog <ArrowRight className="w-4 h-4 ml-2" />
