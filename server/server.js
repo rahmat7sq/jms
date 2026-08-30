@@ -32,7 +32,7 @@ app.get('/', (req, res) => {
 
 app.use(
     cors({
-        origin : process.env.CLIENT_BASE_URL,
+        origin: ['https://jeetmotors.store', 'https://www.jeetmotors.store'],
         methods : ['GET', 'POST', 'DELETE', 'PUT'],
         allowedHeaders : [
             "Content-Type",
