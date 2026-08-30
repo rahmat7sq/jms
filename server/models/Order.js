@@ -12,6 +12,9 @@ const OrderSchema = new mongoose.Schema({
       quantity: Number,
     },
   ],
+  paypalOrderId: {
+  type: String,
+},
   addressInfo: {
     addressId: String,
     address: String,

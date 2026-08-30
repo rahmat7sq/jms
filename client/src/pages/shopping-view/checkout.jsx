@@ -28,7 +28,7 @@ function ShoppingCheckout() {
               ? currentItem?.salePrice
               : currentItem?.price) *
               currentItem?.quantity,
-          0
+          0,
         )
       : 0;
 
@@ -77,13 +77,14 @@ function ShoppingCheckout() {
       totalAmount: totalCartAmount,
       orderDate: new Date(),
       orderUpdateDate: new Date(),
-      paymentId: "",
-      payerId: "",
     };
 
     dispatch(createNewOrder(orderData)).then((data) => {
-      console.log(data, "sangam");
       if (data?.payload?.success) {
+        sessionStorage.setItem(
+          "currentOrderId",
+          JSON.stringify(data.payload.orderId),
+        );
         setIsPaymemntStart(true);
       } else {
         setIsPaymemntStart(false);

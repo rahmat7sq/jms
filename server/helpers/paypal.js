@@ -1,9 +1,15 @@
-const paypal = require("paypal-rest-sdk");
+const { Client, Environment } = require("@paypal/paypal-server-sdk");
+require("dotenv").config();
 
-paypal.configure({
-  mode: "sandbox",
-  client_id: process.env.PAYPAL_CLIENT_ID,
-  client_secret: process.env.PAYPAL_CLIENT_SECRET,
+const client = new Client({
+  clientCredentialsAuthCredentials: {
+    oAuthClientId: process.env.PAYPAL_CLIENT_ID,
+    oAuthClientSecret: process.env.PAYPAL_CLIENT_SECRET,
+  },
+  environment:
+    process.env.PAYPAL_MODE === "live"
+      ? Environment.Production
+      : Environment.Sandbox,
 });
 
-module.exports = paypal;
+module.exports = client;
