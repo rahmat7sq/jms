@@ -1,5 +1,8 @@
 require('dotenv').config();
 const express = require ('express');
+app.get('/', (req, res) => {
+  res.send('API is running');
+});
 const mongoose = require ('mongoose');
 const cookieParser = require ('cookie-parser')
 const cors = require('cors');
