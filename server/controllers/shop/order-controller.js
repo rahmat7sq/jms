@@ -45,7 +45,7 @@ const createOrder = async (req, res) => {
       },
     ];
 
-    const { result } = await ordersController.ordersCreate({
+    const { result } = await ordersController.createOrder({
       body: {
         intent: "CAPTURE",
         purchaseUnits,
@@ -103,7 +103,7 @@ const capturePayment = async (req, res) => {
       });
     }
 
-    const { result } = await ordersController.ordersCapture({
+    const { result } = await ordersController.captureOrder({
       id: order.paypalOrderId,
     });
 
