@@ -1,6 +1,6 @@
 import AuthLogin from "./pages/auth/login";
 import AuthRegister from "./pages/auth/register";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import AuthLayout from "./components/ui/auth/layout";
 import AdminLayout from "./components/ui/admin-view/layout";
 import AdminDashboard from "./pages/admin-view/dashboard";
@@ -20,7 +20,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { checkAuth } from "./store/auth-slice";
 import { Skeleton } from "@/components/ui/skeleton";
-import { Navigate } from "react-router-dom";
 import PaypalReturnPage from "./pages/shopping-view/paypal-return";
 import PaymentSuccessPage from "./pages/shopping-view/payment-success";
 import SearchProducts from "./pages/shopping-view/search";
@@ -35,13 +34,17 @@ function App() {
     dispatch(checkAuth());
   }, [dispatch]);
 
-  if (isLoading) return <Skeleton className="fixed inset-0 w-screen h-screen bg-black z-50" />;;
-  console.log(isLoading, user);
+  if (isLoading)
+    return (
+      <Skeleton className="fixed inset-0 w-screen h-screen bg-black z-50" />
+    );
 
   return (
     <div className="flex flex-col overflow-hidden bg-white">
       <Routes>
-        <Route path="/" element={<Navigate to="/auth/login" replace />} />
+        {/* Land visitors on the store, not a login wall */}
+        <Route path="/" element={<Navigate to="/shop/home" replace />} />
+
         <Route
           path="/auth"
           element={
@@ -68,21 +71,45 @@ function App() {
           <Route path="features" element={<AdminFeatures />} />
         </Route>
 
-        <Route
-          path="/shop"
-          element={
-            <CheckAuth isAuthenticated={isAuthenticated} user={user}>
-              <ShoppingLayout />
-            </CheckAuth>
-          }
-        >
+        {/* Shop layout is NOT gated — public pages render freely */}
+        <Route path="/shop" element={<ShoppingLayout />}>
           <Route path="home" element={<ShoppingHome />} />
           <Route path="listing" element={<ShoppingListing />} />
-          <Route path="account" element={<ShoppingAccount />} />
-          <Route path="checkout" element={<ShoppingCheckout />} />
-          <Route path="paypal-return" element={<PaypalReturnPage />} />
-          <Route path="payment-success" element={<PaymentSuccessPage />} />
           <Route path="search" element={<SearchProducts />} />
+
+          {/* Only these require login */}
+          <Route
+            path="account"
+            element={
+              <CheckAuth isAuthenticated={isAuthenticated} user={user}>
+                <ShoppingAccount />
+              </CheckAuth>
+            }
+          />
+          <Route
+            path="checkout"
+            element={
+              <CheckAuth isAuthenticated={isAuthenticated} user={user}>
+                <ShoppingCheckout />
+              </CheckAuth>
+            }
+          />
+          <Route
+            path="paypal-return"
+            element={
+              <CheckAuth isAuthenticated={isAuthenticated} user={user}>
+                <PaypalReturnPage />
+              </CheckAuth>
+            }
+          />
+          <Route
+            path="payment-success"
+            element={
+              <CheckAuth isAuthenticated={isAuthenticated} user={user}>
+                <PaymentSuccessPage />
+              </CheckAuth>
+            }
+          />
         </Route>
 
         <Route path="*" element={<NotFound />} />

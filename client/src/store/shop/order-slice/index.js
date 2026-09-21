@@ -65,6 +65,7 @@ const shoppingOrderSlice = createSlice({
       state.orderDetails = null;
     },
   },
+  
   extraReducers: (builder) => {
     builder
       .addCase(createNewOrder.pending, (state) => {
