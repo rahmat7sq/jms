@@ -24,6 +24,7 @@ import UserCartWrapper from "./cart-wrapper";
 import { useEffect, useState } from "react";
 import { Label } from "../../ui/label";
 import { fetchCartItems } from "@/store/shop/cart-slice";
+import { resetCart } from "@/store/shop/cart-slice";
 
 function HeaderRightContent() {
   const { user } = useSelector((state) => state.auth);
@@ -33,8 +34,10 @@ function HeaderRightContent() {
   const dispatch = useDispatch();
 
   function handleLogout() {
-    dispatch(logoutUser());
-  }
+  dispatch(logoutUser()).then(() => {
+    dispatch(resetCart());
+  });
+}
 
   useEffect(() => {
     dispatch(fetchCartItems(user?.id));

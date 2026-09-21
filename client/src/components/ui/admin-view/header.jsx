@@ -3,13 +3,16 @@ import { Link } from "react-router-dom";
 import { Button } from "../button";
 import { useDispatch } from "react-redux";
 import { logoutUser } from "@/store/auth-slice";
+import { resetCart } from "@/store/shop/cart-slice";
 
 function AdminHeader({ setOpen }) {
   const dispatch = useDispatch();
 
   function handleLogout() {
-    dispatch(logoutUser());
-  }
+  dispatch(logoutUser()).then(() => {
+    dispatch(resetCart());
+  });
+}
 
   return (
     <header className="flex items-center justify-between px-4 py-3 bg-white border-b shadow-sm">
