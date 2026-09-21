@@ -118,3 +118,4 @@ const shoppingCartSlice = createSlice({
 });
 
 export default shoppingCartSlice.reducer;
+export const { resetCart } = shoppingCartSlice.actions;
